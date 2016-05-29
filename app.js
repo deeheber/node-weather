@@ -18,10 +18,24 @@ function printError(error){
 
 //Connect to the API
 var getForecast = function(zipCode){
-  //Read the data
+
   var request = http.get('http://api.wunderground.com/api/'+apiKey+'/conditions/q/'+zipCode+'.json', function(response){
-    console.log(response.statusCode);
-    
+    //console.log(response.statusCode);
+    var body = '';
+
+    response.on('data', function(chunk){
+      body += chunk;
+    });
+
+    response.on('end', function(){
+      if(response.statusCode === 200){
+        console.log('success');
+      }
+      else {
+        printError(error);
+      }
+    });
+
   });
   //Parse the data
   //Print the data out
