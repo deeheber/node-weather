@@ -7,6 +7,7 @@ Technologies used:
 [Node JS](https://nodejs.org/)
 
 Directions for use:
+
 1. Download and unpack the zipfile
 
 2. Register as a developer and generate an API key from [here](https://www.wunderground.com/weather/api). It should be a series of numbers and letters
