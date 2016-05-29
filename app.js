@@ -1,14 +1,16 @@
-//Problem: we need a way to get weather forecast info based off of a zipcode
+//Problem: we need a way to get weather forecast info based off of a location
 //Solution: Use nodejs to connect to the Weather Underground API to retrieve and print out weather forecast information
 
 var http = require('http');
-var apiKey = require('./apiKeyFile'); //Placing api key in a gitignore file
+var apiKeyObject = require('./apiKeyFile'); //Placing api key in a gitignore file
 
-var zipCode = '97209';
+var apiKeyValue = apiKeyObject[Object.keys(apiKeyObject)[0]];
+var location = '15068';
 
 //Print out message
-function printForecast(weather, temperature){
-  var message = 'The weather is currently ' + weather + ' with a temperatue of ' + temperature + '.';
+function printForecast(weather, temperature, city){
+  var message = 'The weather is currently ' + weather + ' with a temperatue of ' + temperature + ' degrees fahrenheit in '+ city +'.';
+  console.log(message);
 }
 
 //Print out error message
@@ -17,10 +19,12 @@ function printError(error){
 }
 
 //Connect to the API
-var getForecast = function(zipCode){
+var getForecast = function(location){
 
-  var request = http.get('http://api.wunderground.com/api/'+apiKey+'/conditions/q/'+zipCode+'.json', function(response){
-    //console.log(response.statusCode);
+  //Concatenate the HTTP request URL
+  var requestURL = 'http://api.wunderground.com/api/'+apiKeyValue+'/conditions/q/'+location+'.json';
+
+  var request = http.get(requestURL, function(response){
     var body = '';
 
     response.on('data', function(chunk){
@@ -32,21 +36,21 @@ var getForecast = function(zipCode){
         console.log('success');
         try {
           //Parse the data
-          var profile = JSON.parse(body);
+          var weatherReport = JSON.parse(body);
           //Print the data out
-          //console.log(response);
-          //printForecast(weather, temperature);
+          printForecast(weatherReport.current_observation.weather.toLowerCase(), weatherReport.current_observation.temp_f, weatherReport.current_observation.display_location.full);
         } catch(error){
           //Parse error
+          console.log('error detected');
           printError(error);
         }
       }
       else {
-        printError({message: "There was an error getting the forecast for " + zipCode + ". (" + response.statusCode  +")"});
+        printError({message: "There was an error getting the forecast for " + location + ". (" + response.statusCode  +")"});
       }
     });
   });
   request.on('error', printError);
 };
 
-getForecast(zipCode);
+getForecast(location);
