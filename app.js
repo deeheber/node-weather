@@ -30,17 +30,23 @@ var getForecast = function(zipCode){
     response.on('end', function(){
       if(response.statusCode === 200){
         console.log('success');
+        try {
+          //Parse the data
+          var profile = JSON.parse(body);
+          //Print the data out
+          //console.log(response);
+          //printForecast(weather, temperature);
+        } catch(error){
+          //Parse error
+          printError(error);
+        }
       }
       else {
-        printError(error);
+        printError({message: "There was an error getting the forecast for " + zipCode + ". (" + response.statusCode  +")"});
       }
     });
-
   });
-  //Parse the data
-  //Print the data out
-
-  //Error handling
+  request.on('error', printError);
 };
 
 getForecast(zipCode);
