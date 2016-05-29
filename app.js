@@ -33,7 +33,6 @@ var getForecast = function(location){
 
     response.on('end', function(){
       if(response.statusCode === 200){
-        console.log('success');
         try {
           //Parse the data
           var weatherReport = JSON.parse(body);
