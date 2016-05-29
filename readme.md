@@ -13,12 +13,12 @@ Directions for use:
 4. Add the following code to the apiKeyFile.js file:
 
 `var apiKey = 'ADD YOUR API KEY HERE';
-
 module.exports.apiKeyObject = apiKey;`
+
 5. Open the command line application (typically terminal on MacOSX) and navigate to the directory containing the unpacked zipfile you downloaded
 6. Type the following command in the terminal, replacing `ZIPCODE` with the zipcode of the location you'd like the weather for:
 
 `node app.js ZIPCODE`
 
-Note: You can also type in CITY, STATE in lieu of a Zipcode. Example syntax is:
+Note: You can also type in CITY, STATE in lieu of a zipcode. Example syntax is:
 `Phoneix, AZ`
