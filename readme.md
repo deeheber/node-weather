@@ -8,17 +8,23 @@ Technologies used:
 
 Directions for use:
 1. Download and unpack the zipfile
+
 2. Register as a developer and generate an API key from [here](https://www.wunderground.com/weather/api). It should be a series of numbers and letters
+
 3. Create a file titled 'apiKeyFile.js' in the root directory
+
 4. Add the following code to the apiKeyFile.js file:
 
 `var apiKey = 'ADD YOUR API KEY HERE';
 module.exports.apiKeyObject = apiKey;`
 
 5. Open the command line application (typically terminal on MacOSX) and navigate to the directory containing the unpacked zipfile you downloaded
+
 6. Type the following command in the terminal, replacing `ZIPCODE` with the zipcode of the location you'd like the weather for:
 
 `node app.js ZIPCODE`
 
-Note: You can also type in CITY, STATE in lieu of a zipcode. Example syntax is:
+Notes: 
+- You can also type in CITY, STATE in lieu of a zipcode. Example syntax is:
 `Phoneix, AZ`
+- The Weather Underground API only works with US locations, sorry about that.
