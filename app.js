@@ -1,11 +1,13 @@
 //Problem: we need a way to get weather forecast info based off of a location
 //Solution: Use nodejs to connect to the Weather Underground API to retrieve and print out weather forecast information
 
+//Requires
 var http = require('http');
 var apiKeyObject = require('./apiKeyFile'); //Placing api key in a gitignore file
 
+//Variables
 var apiKeyValue = apiKeyObject[Object.keys(apiKeyObject)[0]];
-var location = '15068';
+var location = process.argv.slice(2);
 
 //Print out message
 function printForecast(weather, temperature, city){
@@ -52,4 +54,5 @@ var getForecast = function(location){
   request.on('error', printError);
 };
 
-getForecast(location);
+//Initalizes the program
+location.forEach(getForecast);

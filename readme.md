@@ -3,8 +3,8 @@
 This is a command line application that retrieves weather forecast info whenever the user types in a United States Zipcode.
 
 Technologies used:
-[Weather Underground API](http://www.wunderground.com)
-[Node JS](https://nodejs.org/)
+- [Weather Underground API](http://www.wunderground.com)
+- [Node JS](https://nodejs.org/)
 
 Directions for use:
 
@@ -25,7 +25,9 @@ Directions for use:
 
 `node app.js ZIPCODE`
 
-Notes: 
+Notes:
 - You can also type in CITY, STATE in lieu of a zipcode. Example syntax is:
-`Phoneix, AZ`
-- The Weather Underground API only works with US locations, sorry about that.
+`Phoneix,AZ`
+
+*Note the lack of a space between the city and state*
+- The Weather Underground API only works consistently with US locations, sorry about that. I'm investigating the syntax needed for non US locations.
