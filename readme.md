@@ -26,8 +26,12 @@ Directions for use:
 `node app.js ZIPCODE`
 
 Notes:
-- You can also type in CITY, STATE in lieu of a zipcode. Example syntax is:
+- You can also type in CITY,STATE instead of a zipcode. Example syntax is:
 `Phoneix,AZ`
 
 *Note the lack of a space between the city and state*
+- This app accepts multiple arguments so something like this would work:
+
+  `node app.js 12345 97209 Pittsburgh,PA Orlando,FL`
+
 - The Weather Underground API only works consistently with US locations, sorry about that. I'm investigating the syntax needed for non US locations.
