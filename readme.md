@@ -1,4 +1,4 @@
-##Node Weather -- In progress
+##Node Weather
 
 This is a command line application that retrieves weather forecast info whenever the user types in a United States Zipcode.
 
