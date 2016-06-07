@@ -34,4 +34,10 @@ Notes:
 
   `node app.js 12345 97209 Pittsburgh,PA Orlando,FL`
 
-- The Weather Underground API only works consistently with US locations, sorry about that. I'm investigating the syntax needed for non US locations.
+- The Weather Underground API only works consistently with US locations, sorry about that. See [here](https://www.wunderground.com/about/faq/international_cities.asp) for a list of supported non-US locations. For the most part, I've found that the following will work:
+
+`node app.js CITY,COUNTRY`
+
+Example:
+
+`node app.js paris,france`
