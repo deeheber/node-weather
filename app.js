@@ -42,7 +42,7 @@ var getForecast = function(location){
           printForecast(weatherReport.current_observation.weather.toLowerCase(), weatherReport.current_observation.temp_f, weatherReport.current_observation.display_location.full);
         } catch(error){
           //Parse error
-          console.log('error detected');
+          console.log('Error detected!');
           printError(error);
         }
       }
