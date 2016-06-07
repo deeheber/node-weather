@@ -23,21 +23,22 @@ Directions for use:
 
 6. Type the following command in the terminal, replacing `ZIPCODE` with the zipcode of the location you'd like the weather for:
 
-`node app.js ZIPCODE`
+  `node app.js ZIPCODE`
 
 Notes:
-- You can also type in CITY,STATE instead of a zipcode. Example syntax is:
-`Phoneix,AZ`
+- You can also type in CITY,STATE instead of a zipcode. Capitalization doesn't matter. Example syntax is:
 
-*Note the lack of a space between the city and state*
+  `Phoneix,AZ`
+
+  **Note the lack of a space between the city and state**
 - This app accepts multiple arguments so something like this would work:
 
   `node app.js 12345 97209 Pittsburgh,PA Orlando,FL`
 
 - The Weather Underground API only works consistently with US locations, sorry about that. See [here](https://www.wunderground.com/about/faq/international_cities.asp) for a list of supported non-US locations. For the most part, I've found that the following will work:
 
-`node app.js CITY,COUNTRY`
+  `node app.js CITY,COUNTRY`
 
-Example:
+  Example:
 
-`node app.js paris,france`
+  `node app.js Paris,France`
