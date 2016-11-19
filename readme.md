@@ -1,6 +1,8 @@
-##Node Weather -- In progress
+##Node Weather
 
 This is a command line application that retrieves weather forecast info whenever the user types in a United States Zipcode.
+
+![nodeweather](https://cloud.githubusercontent.com/assets/12616554/15868407/8f4ec38a-2c9c-11e6-8a2a-cea5d1471f33.gif)
 
 Technologies used:
 - [Weather Underground API](http://www.wunderground.com)
