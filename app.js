@@ -1,58 +1,43 @@
-//Problem: we need a way to get weather forecast info based off of a location
-//Solution: Use nodejs to connect to the Weather Underground API to retrieve and print out weather forecast information
+const http = require('http');
+const apiKeyObject = require('./apiKeyFile'); //Placing api key in a gitignore file
+const apiKeyValue = apiKeyObject[Object.keys(apiKeyObject)[0]];
+const location = process.argv.slice(2);
 
-//Requires
-var http = require('http');
-var apiKeyObject = require('./apiKeyFile'); //Placing api key in a gitignore file
-
-//Variables
-var apiKeyValue = apiKeyObject[Object.keys(apiKeyObject)[0]];
-var location = process.argv.slice(2);
-
-//Print out message
 function printForecast(weather, temperature, city){
-  var message = 'The weather is currently ' + weather + ' with a temperatue of ' + temperature + ' degrees fahrenheit in '+ city +'.';
+  const message = `The weather is currently ${weather} with a temperatue of ${temperature} degrees fahrenheit in ${city}.`;
   console.log(message);
 }
 
-//Print out error message
 function printError(error){
   console.error(error.message);
 }
 
-//Connect to the API
-var getForecast = function(location){
+const getForecast = location=>{
+  const requestURL = `http://api.wunderground.com/api/${apiKeyValue}/conditions/q/${location}.json`;
 
-  //Concatenate the HTTP request URL
-  var requestURL = 'http://api.wunderground.com/api/'+apiKeyValue+'/conditions/q/'+location+'.json';
+  const request = http.get(requestURL, response=>{
+    let body = '';
 
-  var request = http.get(requestURL, function(response){
-    var body = '';
-
-    response.on('data', function(chunk){
+    response.on('data', chunk=>{
       body += chunk;
     });
 
-    response.on('end', function(){
+    response.on('end', ()=>{
       if(response.statusCode === 200){
         try {
-          //Parse the data
-          var weatherReport = JSON.parse(body);
-          //Print the data out
+          const weatherReport = JSON.parse(body);
           printForecast(weatherReport.current_observation.weather.toLowerCase(), weatherReport.current_observation.temp_f, weatherReport.current_observation.display_location.full);
-        } catch(error){
-          //Parse error
+      } catch(error){
           console.log('Error detected!');
           printError(error);
         }
       }
       else {
-        printError({message: "There was an error getting the forecast for " + location + ". (" + response.statusCode  +")"});
+        printError({message: `There was an error getting the forecast for ${location} ${response.statusCode}`});
       }
     });
   });
   request.on('error', printError);
 };
 
-//Initalizes the program
 location.forEach(getForecast);
