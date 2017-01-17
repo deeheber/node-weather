@@ -1,5 +1,7 @@
 ##Node Weather
 
+[notes](#notes)
+
 This is a command line application that retrieves weather forecast info whenever the user types in a United States Zipcode.
 
 ![nodeweather](https://cloud.githubusercontent.com/assets/12616554/15868407/8f4ec38a-2c9c-11e6-8a2a-cea5d1471f33.gif)
@@ -27,7 +29,7 @@ Directions for use:
 
   `node app.js ZIPCODE`
 
-Notes:
+#notes:
 - You can also type in CITY,STATE instead of a zipcode. Capitalization doesn't matter. Example syntax is:
 
   `Phoneix,AZ`
